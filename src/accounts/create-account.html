@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Create an Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+      <link 
+          href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" 
+          rel="stylesheet">  
+    <link href="/css/styles.css"> 
+    <link rel="stylesheet" href="/styles/style.css"> 
+    <script src="js/main.js" type="module"></script> 
+</head> 
+<body> 
+    <header class="divider"> 
+        <div class="logo"> 
+            <img src="/public/images/1.png" alt="Logo"> 
+        </div> 
+        <a href="search"><img src="#" alt=""></a> 
+        <div class="account"> 
+            <a href="account/account.html"><img src="/public/images/myacccount.png" alt="my account link"></a> 
+        </div> 
+    </header> 
+    <main> 
+        <form id="create-acct-form"> 
+            <h1>Create Account</h1> 
+            <input class="fname" placeholder="First Name"> 
+            <input class="lname" placeholder="Last Name"> 
+            <input class="email" placeholder="Email"> 
+            <input class="username" placeholder="Username"> 
+            <input class="password" placeholder="Password">
+            <p>Password requirements: 
+            <ul> 
+                <li>Upper Case</li> 
+                <li>Symbol</li> 
+                <li>Number</li> 
+                <li>Lower Case</li> 
+            </ul> 
+            </p> 
+        </form> 
+        <button type="submit" onclick="location.href='account.html'">Create My Account</button> 
+    </main> 
+</body> 
+</html> 

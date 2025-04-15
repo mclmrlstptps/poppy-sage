@@ -1,0 +1,451 @@
+body { 
+  background-color: #fff9f2; 
+} 
+
+/* Main container styling */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+header { 
+  background-color: #496977; 
+  display: flex; 
+  margin-top: 20px; 
+} 
+
+header.divider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #496977;
+  padding: 0.5rem 1rem;
+}
+
+.logo img, .account img {
+  height: 100px; 
+  width: auto;
+  border-radius: 50%; 
+}
+
+.search img {
+  height: 45px; 
+  width: auto;
+  border-radius: 50%; 
+}
+
+h1, 
+h2 { 
+  font-family: "Bodoni Moda SC", sans-serif; 
+} 
+
+h1 { 
+  font-size: 3rem; 
+  text-align: center; 
+  color: #2E4147;
+} 
+
+.meal-types { 
+  display: flex; 
+  justify-content: space-between; 
+} 
+
+/* Login Styles */
+.login-form {
+  background-color: #45616a;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  width: max-content;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-header {
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+
+input.username_login,
+input.password_login {
+  padding: 0.5rem;
+  border: 2px solid #456874;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1rem;
+  width: 200px;
+}
+
+input.username_login::placeholder,
+input.password_login::placeholder {
+  color: #456874;
+}
+
+.login-form input,
+.login-form button {
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.login-form button {
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background-color: #e2564c;
+  color: white;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Home Page Styles */
+.meal-types {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  width: 60%;
+}
+
+.meal-types > div {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.meal-types > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.meal-types img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.meal-types h2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(73, 105, 119, 0.8);
+  color: white;
+  margin: 0;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 0 0 8px 8px;
+}
+
+.dinner, .desserts, .gluten-free, .breads {
+  position: relative;
+}
+
+.register {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  position: relative;
+  width: 40%;
+}
+
+.register img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.featured-recipe-label {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 10px 0 20px;
+  color: #2E4147;
+}
+
+.register button {
+  background-color: #496977;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.register button:hover {
+  background-color: #3a5562;
+}
+
+
+
+
+/* Create Account Styles */
+form { 
+  background-color: #496977; 
+  border: #496977; 
+  border-radius: 20px; 
+  margin-top: 30px; 
+} 
+
+form h1 { 
+  color: white; 
+} 
+
+input { 
+  background-color: #fff9f2; 
+  border: 1px solid #496977; 
+  border-radius: 5px; 
+} 
+
+button { 
+  background-color: #ced6da; 
+  border: #ac6532 20px solid; 
+  border-radius: 20px; 
+} 
+
+#create-acct-form {
+  background-color: #4d6a75; 
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: white;
+}
+
+#create-acct-form h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: normal;
+}
+
+#create-acct-form input {
+  padding: 10px 15px;
+  margin: 8px;
+  border: 2px solid #3b5a67;
+  border-radius: 50px;
+  background-color: #fff9f2;
+  width: calc(100% - 30px);
+  max-width: 300px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#create-acct-form .fname,
+#create-acct-form .lname {
+  width: calc(50% - 16px);
+  max-width: 200px;
+  display: inline-block;
+}
+
+#create-acct-form .email,
+#create-acct-form .username {
+  width: calc(50% - 16px);
+  max-width: 200px;
+  display: inline-block;
+}
+
+#create-acct-form .password {
+  width: calc(60% - 16px);
+  display: inline-block;
+}
+
+#create-acct-form p {
+  text-align: left;
+  margin-top: 15px;
+  font-size: 14px;
+  display: none; 
+}
+
+#create-acct-form ul {
+  text-align: left;
+  padding-left: 20px;
+  margin-top: 5px;
+  font-size: 14px;
+  display: none; 
+}
+
+#create-acct-form .password:focus ~ p,
+#create-acct-form .password:focus ~ p + ul {
+  display: block;
+}
+
+
+button[type="submit"] {
+  background-color: #b8c9d3; 
+  border: 10px solid #ac6532;
+  border-radius: 50px;
+  color: black;
+  padding: 15px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: -25px auto 0;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+button[type="submit"]:hover {
+  background-color: #a7bbc9;
+}
+
+/* Account Page Styles */
+.my-account {
+  display: grid;
+  grid-template-areas: 
+    "recipes shopping"
+    "meal meal";
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* My Recipes Section */
+.my-recipes {
+  grid-area: recipes;
+  background-color: #fff9f2;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.my-recipes h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: 'Bodoni Moda SC', serif;
+  color: #000;
+}
+
+/* Add book image styling */
+.my-recipes::after {
+  content: "";
+  display: block;
+  background-image: url('/public/images/cookbook.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 150px;
+  margin-top: 20px;
+}
+
+
+/* Shopping List Section */
+.shopping-list {
+  grid-area: shopping;
+  background-color: #496977;
+  border-radius: 10px;
+  padding: 20px;
+  color: white;
+}
+
+.shopping-list h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: 'Bodoni Moda SC', serif;
+  color: white;
+}
+
+.shopping-list ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.shopping-list li {
+  margin-bottom: 8px;
+  color: white;
+}
+
+/* Meal Plan Section */
+.meal-plan {
+  grid-area: meal;
+  margin-top: 20px;
+}
+
+.meal-plan h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Bodoni Moda SC', serif;
+  color: #000;
+}
+
+.days-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.day {
+  flex: 1;
+  aspect-ratio: 1;
+  background-color: #496977;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  color: white;
+  height: 100px;
+  width: 100px;
+}
+
+.day-name {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  #create-acct-form .fname,
+  #create-acct-form .lname,
+  #create-acct-form .email,
+  #create-acct-form .username,
+  #create-acct-form .password {
+    width: calc(100% - 16px);
+    max-width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* .my-account {
+  grid-template-areas: 
+    "recipes"
+    "shopping"
+    "meal";
+}
+
+.days-container {
+  flex-wrap: wrap;
+}
+
+.day {
+  min-width: 100px;
+} */
