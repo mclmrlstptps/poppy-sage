@@ -3,14 +3,14 @@
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Search</title> 
+    <title>Search Recipes</title> 
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-      <link 
-          href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" 
-          rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" 
+        rel="stylesheet"> 
     <link rel="stylesheet" href="../styles/style.css"> 
-    <script src="../js/main.js" type="module"></script> 
+    <script src="../js/search.js" type="module"></script> 
 </head> 
 <body> 
     <header class="divider"> 
@@ -19,12 +19,24 @@
         </div> 
         <a href="search"><img src="#" alt=""></a> 
         <div class="account"> 
-            <a href="account/account.html"><img src="/public/images/account.png" alt="my account link"></a> 
+            <a href="/src/accounts/login.html"><img src="/public/images/myacccount.png" alt="my account link"></a> 
+        </div>
+        <div class="search"> 
+            <a href="search/search.html"><img src="/public/images/search.png" alt="my account link"></a> 
         </div> 
-    </header> 
+    </header>
     <main> 
-        <input type="text" id="ingredient" placeholder="Enter an ingredient">
-        <button onclick="fetchData()">Search Ingredients</button><br>
-    </main> 
+        <div class="search-container">
+            <h1>Find Recipes by Ingredient</h1>
+            <div class="search-bar">
+                <input type="text" id="ingredient" placeholder="Enter an ingredient">
+                <button type="button" id="searchButton" onclick="fetchRecipesByIngredient()">Search Recipes</button>
+            </div>
+            <div id="searchResults" class="search-results"></div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Recipe Finder</p>
+    </footer>
 </body> 
-</html> 
+</html>

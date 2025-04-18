@@ -1,64 +1,77 @@
 import { getLocalStorage, setLocalStorage } from './utils.mjs';
 
-
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
 const CATEGORY_CACHE_KEY = 'recipe_categories';
 const FEATURED_CACHE_KEY = 'featured_recipe';
-function isCacheValid(cacheData) {
-    if (!cacheData || !cacheData.timestamp) return false;
-    const now = new Date().getTime();
-    return (now - cacheData.timestamp) < CACHE_DURATION;
-  }
+const CATEGORY_RECIPES_CACHE_KEY = 'category_recipes';
 
+function isCacheValid(cacheData) {
+  if (!cacheData || !cacheData.timestamp) return false;
+  const now = new Date().getTime();
+  return (now - cacheData.timestamp) < CACHE_DURATION;
+}
 
 // Formatting Spoonacular Recipes
 function formatSpoonacularRecipe(recipe) {
-    return {
-      id: recipe.id,
-      title: recipe.title,
-      image: recipe.image || `https://spoonacular.com/recipeImages/${recipe.id}-556x370.jpg`,
-      summary: recipe.summary,
-      instructions: recipe.instructions,
-      readyInMinutes: recipe.readyInMinutes,
-      servings: recipe.servings,
-      source: 'spoonacular',
-      ingredients: recipe.extendedIngredients ? recipe.extendedIngredients.map(ing => ({
-        name: ing.original,
-        amount: ing.amount,
-        unit: ing.unit
-      })) : []
-    };
-  }
+  return {
+    id: recipe.id,
+    title: recipe.title,
+    image: recipe.image || `https://spoonacular.com/recipeImages/${recipe.id}-556x370.jpg`,
+    summary: recipe.summary,
+    instructions: recipe.instructions,
+    readyInMinutes: recipe.readyInMinutes,
+    servings: recipe.servings,
+    source: 'spoonacular',
+    extendedIngredients: recipe.extendedIngredients,
+    ingredients: recipe.extendedIngredients ? recipe.extendedIngredients.map(ing => ({
+      name: ing.original,
+      amount: ing.amount,
+      unit: ing.unit
+    })) : [],
+    analyzedInstructions: recipe.analyzedInstructions
+  };
+}
 
 // Formatting MealDB Recipes
 function formatMealDbRecipe(recipe) {
-    // Extract ingredients (MealDB has ingredients1-20)
-    const ingredients = [];
-    for (let i = 1; i <= 20; i++) {
-      const ingredient = recipe[`strIngredient${i}`];
-      const measure = recipe[`strMeasure${i}`];
-      
-      if (ingredient && ingredient.trim()) {
-        ingredients.push({
-          name: ingredient,
-          amount: measure || '',
-          unit: ''
-        });
-      }
-    }
+  // Extract ingredients (MealDB has ingredients1-20)
+  const ingredients = [];
+  const extendedIngredients = [];
+  
+  for (let i = 1; i <= 20; i++) {
+    const ingredient = recipe[`strIngredient${i}`];
+    const measure = recipe[`strMeasure${i}`];
     
-    return {
-      id: recipe.idMeal,
-      title: recipe.strMeal,
-      image: recipe.strMealThumb,
-      summary: recipe.strTags ? `Tags: ${recipe.strTags}` : '',
-      instructions: recipe.strInstructions,
-      readyInMinutes: 30, // MealDB doesn't provide this info
-      servings: 4, // MealDB doesn't provide this info
-      source: 'mealdb',
-      ingredients
-    };
+    if (ingredient && ingredient.trim()) {
+      ingredients.push({
+        name: ingredient,
+        amount: measure || '',
+        unit: ''
+      });
+      
+      extendedIngredients.push({
+        original: `${measure || ''} ${ingredient}`.trim(),
+        amount: measure || '',
+        unit: '',
+        name: ingredient
+      });
+    }
   }
+  
+  return {
+    id: recipe.idMeal,
+    title: recipe.strMeal,
+    image: recipe.strMealThumb,
+    summary: recipe.strTags ? `Tags: ${recipe.strTags}` : '',
+    instructions: recipe.strInstructions,
+    readyInMinutes: 30, // MealDB doesn't provide this info
+    servings: 4, // MealDB doesn't provide this info
+    source: 'mealdb',
+    ingredients,
+    extendedIngredients // Add this for compatibility with recipe display
+  };
+}
+
 class RecipeAPI {
   constructor() {
     // Load environment variables from window.ENV
@@ -67,6 +80,13 @@ class RecipeAPI {
     this.spoonacularBaseUrl = 'https://api.spoonacular.com';
     this.mealDbApiKey = '1'; // The free API key for MealDB
     this.mealDbBaseUrl = 'https://www.themealdb.com/api/json/v1';
+    
+    this.categoryMapping = {
+      'dinner': 'main course',
+      'desserts': 'dessert',
+      'gluten-free': 'gluten free',
+      'breads': 'bread'
+    };
     
     this.loadEnvVariables();
   }
@@ -139,19 +159,11 @@ class RecipeAPI {
       return cachedData.data;
     }
     
-    // Define the categories and search terms
-    const categories = {
-      'dinner': 'main course',
-      'desserts': 'dessert',
-      'gluten-free': 'gluten free',
-      'breads': 'bread'
-    };
-    
     const result = {};
     
     // Try Spoonacular API first for each category
     if (this.spoonacularApiKey) {
-      for (const [category, searchTerm] of Object.entries(categories)) {
+      for (const [category, searchTerm] of Object.entries(this.categoryMapping)) {
         try {
           const response = await this.fetchFromSpoonacular('/recipes/random', {
             tags: searchTerm,
@@ -212,7 +224,7 @@ class RecipeAPI {
         const response = await this.fetchFromMealDB('/categories.php');
         
         if (response && response.categories) {
-          for (const [category, searchTerm] of Object.entries(categories)) {
+          for (const [category, searchTerm] of Object.entries(this.categoryMapping)) {
             // Find a relevant category
             let endpoint = '';
             switch (category) {
@@ -310,8 +322,8 @@ class RecipeAPI {
     return featured;
   }
 
-  // Get recipe details
-  async getRecipeDetails(id, source) {
+  // Get recipe details by ID and source
+  async getRecipeById(id, source) {
     if (source === 'spoonacular') {
       try {
         const response = await this.fetchFromSpoonacular(`/recipes/${id}/information`);
@@ -335,6 +347,98 @@ class RecipeAPI {
     return null;
   }
 
+  // Get recipe details (keeping this for backward compatibility)
+  async getRecipeDetails(id, source) {
+    return this.getRecipeById(id, source);
+  }
+
+  // Get recipes for a specific category
+  async getRecipesByCategory(category) {
+    // Check cache first
+    const cacheKey = `${CATEGORY_RECIPES_CACHE_KEY}_${category}`;
+    const cachedData = getLocalStorage(cacheKey);
+    if (isCacheValid(cachedData)) {
+      return cachedData.data;
+    }
+    
+    const results = [];
+    
+    // Get the API category term
+    const apiCategory = this.categoryMapping[category] || category;
+    
+    // Try Spoonacular API first
+    if (this.spoonacularApiKey) {
+      try {
+        const response = await this.fetchFromSpoonacular('/recipes/complexSearch', {
+          type: apiCategory,
+          number: 12,
+          addRecipeInformation: true
+        });
+        
+        if (response && response.results && response.results.length > 0) {
+          // Add Spoonacular results
+          response.results.forEach(recipe => {
+            results.push(formatSpoonacularRecipe(recipe));
+          });
+        }
+      } catch (error) {
+        console.error(`Error fetching ${category} recipes from Spoonacular:`, error);
+      }
+    }
+    
+    // Supplement with MealDB if needed
+    if (results.length < 6) {
+      try {
+        let endpoint = '';
+        
+        // Map category to relevant MealDB endpoint
+        switch (category) {
+          case 'dinner':
+            endpoint = '/filter.php?c=Main';
+            break;
+          case 'desserts':
+            endpoint = '/filter.php?c=Dessert';
+            break;
+          case 'gluten-free':
+            endpoint = '/filter.php?c=Side'; // Not exact but close
+            break;
+          case 'breads':
+            endpoint = '/filter.php?c=Breakfast'; // Not exact but might contain bread
+            break;
+        }
+        
+        if (endpoint) {
+          const response = await this.fetchFromMealDB(endpoint);
+          
+          if (response && response.meals && response.meals.length > 0) {
+            // Limit to a reasonable number
+            const mealsToFetch = Math.min(12 - results.length, response.meals.length);
+            const mealSubset = response.meals.slice(0, mealsToFetch);
+            
+            // Fetch full details for each meal
+            for (const meal of mealSubset) {
+              const recipeResponse = await this.fetchFromMealDB(`/lookup.php?i=${meal.idMeal}`);
+              
+              if (recipeResponse && recipeResponse.meals && recipeResponse.meals.length > 0) {
+                results.push(formatMealDbRecipe(recipeResponse.meals[0]));
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error(`Error fetching ${category} recipes from MealDB:`, error);
+      }
+    }
+    
+    // Cache the results
+    setLocalStorage(cacheKey, {
+      timestamp: new Date().getTime(),
+      data: results
+    });
+    
+    return results;
+  }
+
   // Search recipes
   async searchRecipes(query, filters = {}) {
     let results = [];
@@ -353,7 +457,7 @@ class RecipeAPI {
         if (response && response.results) {
           results = await Promise.all(response.results.map(async result => {
             // Get full recipe details
-            const details = await this.getRecipeDetails(result.id, 'spoonacular');
+            const details = await this.getRecipeById(result.id, 'spoonacular');
             return details || formatSpoonacularRecipe(result);
           }));
         }

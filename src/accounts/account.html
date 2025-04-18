@@ -9,23 +9,26 @@
       <link 
           href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" 
           rel="stylesheet"> 
-    <link href="/css/styles.css"> 
+          <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/style.css"> 
-    <script src="js/main.js" type="module"></script>
+    <script src="/js/main.mjs" type="module"></script>
 </head> 
 <body> 
-    <header class="divider"> 
-        <div class="logo"> 
-            <img src="/public/images/1.png" alt="Logo"> 
-        </div> 
-        <a href="search"><img src="#" alt=""></a> 
-        <div class="account"> 
-            <a href="account/account.html"><img src="/public/images/myacccount.png" alt="my account link"></a> 
-        </div> 
-        <div class="search"> 
-            <a href="search/search.html"><img src="/public/images/search.png" alt="my account link"></a> 
-        </div> 
-    </header> 
+<header class="divider">
+    <div class="logo">
+        <a href="index.html">
+            <img src="/public/images/1.png" alt="Logo - Home">
+        </a>
+    </div>
+    <nav>
+        <ul class="search">
+            <a href="../../search/search.html"><img src="/public/images/search.png" alt="search icon" class="nav-icon"></a>
+        </ul>
+    </nav>
+    <div class="logout">
+        <button id="logout-button" class="nav-link">Logout</button>
+    </div>
+</header>
     <main>
         <div class="my-account">
             <!-- List saved recipes here -->

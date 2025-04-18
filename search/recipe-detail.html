@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Recipe Details</title> 
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" 
+        rel="stylesheet"> 
+    <link rel="stylesheet" href="../styles/style.css"> 
+    <script src="../js/recipe-detail.js" type="module"></script> 
+</head> 
+<body> 
+    <header class="divider"> 
+        <div class="logo"> 
+            <img src="/public/images/1.png" alt="Logo"> 
+        </div>  
+        <div class="account"> 
+            <a href="/src/accounts/login.html"><img src="/public/images/myacccount.png" alt="my account link"></a> 
+        </div>
+        <nav>
+            <ul class="search">
+                <a href="../../search/search.html"><img src="/public/images/search.png" alt="search icon" class="nav-icon"></a>
+            </ul>
+        </nav>
+    </header> 
+    <main> 
+        <div class="recipe-container">
+            <!-- Loading spinner initially shown -->
+            <div id="loadingSpinner" class="loading">Loading recipe...</div>
+            
+            <!-- Recipe content will be loaded here -->
+            <div id="recipeContent" class="recipe-content" style="display: none;">
+                <div class="recipe-header">
+                    <h1 id="recipeTitle"></h1>
+                    <div class="recipe-meta">
+                        <span id="recipeCookTime" class="meta-item"></span>
+                        <span id="recipeServings" class="meta-item"></span>
+                        <span id="recipeSource" class="meta-badge"></span>
+                    </div>
+                </div>
+                
+                <div class="recipe-main">
+                    <div class="recipe-image-container">
+                        <img id="recipeImage" src="" alt="">
+                    </div>
+                    
+                    <div class="recipe-summary">
+                        <h2>About this Recipe</h2>
+                        <p id="recipeSummary"></p>
+                    </div>
+                </div>
+                
+                <div class="recipe-details">
+                    <div class="ingredients-section">
+                        <h2>Ingredients</h2>
+                        <ul id="ingredientsList"></ul>
+                    </div>
+                    
+                    <div class="instructions-section">
+                        <h2>Instructions</h2>
+                        <div id="instructionsContent"></div>
+                    </div>
+                </div>
+                
+                <div class="recipe-actions">
+                    <button id="saveRecipeBtn" class="action-btn">Save Recipe</button>
+                    <button id="addToMealPlan" class="action-btn">Add to Meal Plan</button>
+                    <a href="#" id="backToSearch" class="action-btn secondary">Back to Search</a>
+                </div>
+            </div>
+            
+            <!-- Error message (hidden by default) -->
+            <div id="errorMessage" class="error" style="display: none;">
+                Could not load the recipe. Please try again later.
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Recipe Finder</p>
+    </footer>
+    
+    <!-- Add the script at the end of the body -->
+    <script src="../js/recipe-detail.js" type="module"></script>
+</body> 
+</html>

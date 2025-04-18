@@ -9,9 +9,9 @@
       <link 
           href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" 
           rel="stylesheet">  
-    <link href="/css/styles.css"> 
+    <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/style.css"> 
-    <script src="js/main.js" type="module"></script> 
+    <script src="/js/main.mjs" type="module"></script>
 </head> 
 <body> 
     <header class="divider"> 
@@ -20,8 +20,8 @@
         </div> 
         <a href="search"><img src="#" alt=""></a> 
         <div class="account"> 
-            <a href="account/account.html"><img src="/public/images/myacccount.png" alt="my account link"></a> 
-        </div> 
+            <a href="/src/accounts/login.html"><img src="/public/images/myacccount.png" alt="my account link"></a> 
+        </div>
     </header> 
     <main> 
         <form id="create-acct-form"> 
@@ -39,8 +39,9 @@
                 <li>Lower Case</li> 
             </ul> 
             </p> 
+            <button type="submit">Create My Account</button>
         </form> 
-        <button type="submit" onclick="location.href='account.html'">Create My Account</button> 
+        <p class="login-link">Already have an account? <a href="/src/accounts/login.html">Login here</a></p>
     </main> 
 </body> 
 </html> 

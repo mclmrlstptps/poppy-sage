@@ -9,9 +9,9 @@
       <link 
           href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" 
           rel="stylesheet"> 
-    <link href="/css/styles.css"> 
-    <link rel="stylesheet" href="/styles/style.css"> 
-    <script src="js/main.js" type="module"></script> 
+    <link href="/styles/style.css"> 
+    <link rel="stylesheet" href="/styles/style.css">
+    <script src="/js/main.mjs" type="module"></script>
 </head> 
 <body> 
     <header class="divider"> 
@@ -20,8 +20,8 @@
         </div> 
         <a href="search"><img src="#" alt=""></a> 
         <div class="account"> 
-            <a href="account/account.html"><img src="/public/images/account.png" alt="my account link"></a> 
-        </div> 
+            <a href="/src/accounts/login.html"><img src="/public/images/myacccount.png" alt="my account link"></a> 
+        </div>
     </header> 
     <main> 
         <h1>Poppy & Sage</h1>
@@ -29,8 +29,9 @@
             <h2 class="login-header">Login</h2><br>
             <input class="username_login" placeholder="Username"> 
             <input class="password_login" placeholder="Password"> 
-            <button type="submit" onclick="location.href='account.html'">Login</button>
+            <button type="submit">Login</button>
         </form> 
+        <p class="register-link">Don't have an account? <a href="/src/accounts/create-account.html">Register here</a></p>
     </main> 
 </body> 
 </html> 

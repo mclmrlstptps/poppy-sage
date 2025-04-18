@@ -1,4 +1,5 @@
-<html lang="en"> 
+<!DOCTYPE html> 
+<html lang="en">
   <head> 
       <meta charset="UTF-8"> 
       <link rel="icon" type="image/svg+xml" href="/vite.svg" />
@@ -9,19 +10,18 @@
       <link 
           href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" 
           rel="stylesheet"> 
-      <link rel="stylesheet" href="/styles/style.css"> 
-
-      <script type="module" src="/js/main.mjs"></script>
+          <link rel="stylesheet" href="/styles/style.css"> 
+    
+          <script src="/js/main.mjs" type="module"></script>
   </head> 
 <body> 
     <header class="divider"> 
         <div class="logo"> 
             <img src="/public/images/1.png" alt="Logo"> 
         </div> 
-        <a href="search"><img src="#" alt=""></a> 
         <div class="account"> 
-            <a href="account/account.html"><img src="/public/images/myacccount.png" alt="my account link"></a> 
-        </div> 
+            <a href="/src/accounts/login.html"><img src="/public/images/myacccount.png" alt="my account link"></a> 
+        </div>
         <div class="search"> 
             <a href="search/search.html"><img src="/public/images/search.png" alt="my account link"></a> 
         </div> 
@@ -48,7 +48,7 @@
         </div> 
         <div class="register"> 
             <img src="/public/images/cookbook.png" alt="Featured recipe"> 
-            <button type="submit" onclick="location.href='account.html'">Create My Account</button> 
+            <button type="submit">Create My Account</button>
         </div> 
     </main> 
     <footer>
