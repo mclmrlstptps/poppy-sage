@@ -88,7 +88,7 @@ export function createElement(tag, className, text = '') {
 
 export function createElementWithAttributes(tag, attrs = {}, text = '') {
   const element = document.createElement(tag);
-  
+
   Object.entries(attrs).forEach(([key, value]) => {
     if (key === 'className') {
       element.className = value;
@@ -100,7 +100,7 @@ export function createElementWithAttributes(tag, attrs = {}, text = '') {
       element.setAttribute(key, value);
     }
   });
-  
+
   if (text) element.textContent = text;
   return element;
 }
@@ -128,18 +128,18 @@ export function formatCategoryName(category) {
 // Format cooking time from minutes
 export function formatCookingTime(minutes) {
   if (!minutes) return 'Time not specified';
-  
+
   if (minutes < 60) {
     return `${minutes} min`;
   }
-  
+
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
-  
+
   if (remainingMinutes === 0) {
     return `${hours} hr`;
   }
-  
+
   return `${hours} hr ${remainingMinutes} min`;
 }
 
@@ -150,7 +150,7 @@ export function logoutUser() {
   // We don't completely remove the userData, just mark as logged out
   const userData = getLocalStorage('userData');
   if (userData) {
-      userData.isLoggedIn = false;
-      setLocalStorage('userData', userData);
+    userData.isLoggedIn = false;
+    setLocalStorage('userData', userData);
   }
 }

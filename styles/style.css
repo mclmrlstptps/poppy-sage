@@ -1,6 +1,6 @@
-body { 
-  background-color: #fff9f2; 
-} 
+body {
+  background-color: #fff9f2;
+}
 
 /* Main container styling */
 main {
@@ -12,11 +12,11 @@ main {
   font-family: Arial, sans-serif;
 }
 
-header { 
-  background-color: #496977; 
-  display: flex; 
-  margin-top: 20px; 
-} 
+header {
+  background-color: #496977;
+  display: flex;
+  margin-top: 20px;
+}
 
 header.divider {
   display: flex;
@@ -26,40 +26,41 @@ header.divider {
   padding: 0.5rem 1rem;
 }
 
-.logo img, .account img {
-  height: 100px; 
+.logo img,
+.account img {
+  height: 100px;
   width: auto;
-  border-radius: 50%; 
+  border-radius: 50%;
 }
 
 .search img {
-  height: 45px; 
+  height: 45px;
   width: auto;
-  border-radius: 50%; 
+  border-radius: 50%;
 }
 
-h1, 
-h2 { 
-  font-family: "Bodoni Moda SC", sans-serif; 
-} 
+h1,
+h2 {
+  font-family: "Bodoni Moda SC", sans-serif;
+}
 
-h1 { 
-  font-size: 3rem; 
-  text-align: center; 
+h1 {
+  font-size: 3rem;
+  text-align: center;
   color: #2E4147;
-} 
+}
 
-.meal-types { 
-  display: flex; 
-  justify-content: space-between; 
-} 
+.meal-types {
+  display: flex;
+  justify-content: space-between;
+}
 
 /* Login Styles */
 .login-form {
   background-color: #45616a;
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: max-content;
   margin: 5rem auto;
   display: flex;
@@ -115,20 +116,20 @@ input.password_login::placeholder {
   width: 60%;
 }
 
-.meal-types > div {
+.meal-types>div {
   background-color: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
   position: relative;
 }
 
-.meal-types > div:hover {
+.meal-types>div:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .meal-types img {
@@ -151,7 +152,10 @@ input.password_login::placeholder {
   border-radius: 0 0 8px 8px;
 }
 
-.dinner, .desserts, .gluten-free, .breads {
+.dinner,
+.desserts,
+.gluten-free,
+.breads {
   position: relative;
 }
 
@@ -159,7 +163,7 @@ input.password_login::placeholder {
   background-color: white;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   position: relative;
   width: 40%;
@@ -190,7 +194,7 @@ input.password_login::placeholder {
   cursor: pointer;
   transition: background-color 0.2s ease;
   font-weight: bold;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .register button:hover {
@@ -201,31 +205,31 @@ input.password_login::placeholder {
 
 
 /* Create Account Styles */
-form { 
-  background-color: #496977; 
-  border: #496977; 
-  border-radius: 20px; 
-  margin-top: 30px; 
-} 
+form {
+  background-color: #496977;
+  border: #496977;
+  border-radius: 20px;
+  margin-top: 30px;
+}
 
-form h1 { 
-  color: white; 
-} 
+form h1 {
+  color: white;
+}
 
-input { 
-  background-color: #fff9f2; 
-  border: 1px solid #496977; 
-  border-radius: 5px; 
-} 
+input {
+  background-color: #fff9f2;
+  border: 1px solid #496977;
+  border-radius: 5px;
+}
 
-button { 
-  background-color: #ced6da; 
-  border: #ac6532 20px solid; 
-  border-radius: 20px; 
-} 
+button {
+  background-color: #ced6da;
+  border: #ac6532 20px solid;
+  border-radius: 20px;
+}
 
 #create-acct-form {
-  background-color: #4d6a75; 
+  background-color: #4d6a75;
   border-radius: 15px;
   padding: 30px;
   width: 100%;
@@ -277,7 +281,7 @@ button {
   text-align: left;
   margin-top: 15px;
   font-size: 14px;
-  display: none; 
+  display: none;
 }
 
 #create-acct-form ul {
@@ -285,17 +289,17 @@ button {
   padding-left: 20px;
   margin-top: 5px;
   font-size: 14px;
-  display: none; 
+  display: none;
 }
 
-#create-acct-form .password:focus ~ p,
-#create-acct-form .password:focus ~ p + ul {
+#create-acct-form .password:focus~p,
+#create-acct-form .password:focus~p+ul {
   display: block;
 }
 
 
 button[type="submit"] {
-  background-color: #b8c9d3; 
+  background-color: #b8c9d3;
   border: 10px solid #ac6532;
   border-radius: 50px;
   color: black;
@@ -317,7 +321,7 @@ button[type="submit"]:hover {
 /* Account Page Styles */
 .my-account {
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "recipes shopping"
     "meal meal";
   gap: 20px;
@@ -488,7 +492,9 @@ button[type="submit"]:hover {
 }
 
 /* Status Messages */
-.loading, .error, .no-results {
+.loading,
+.error,
+.no-results {
   text-align: center;
   padding: 2rem;
   font-size: 1.1rem;
@@ -642,6 +648,7 @@ button[type="submit"]:hover {
 
 
 @media (max-width: 600px) {
+
   #create-acct-form .fname,
   #create-acct-form .lname,
   #create-acct-form .email,
@@ -654,6 +661,7 @@ button[type="submit"]:hover {
     margin-right: auto;
   }
 }
+
 /* .my-account {
   grid-template-areas: 
     "recipes"
